@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+$_SESSION['userId'] = 1;
+
 include("db/db.php");
 
 // Ta bort inlägg och skicka tillbaka användaren
@@ -41,7 +44,7 @@ if ($errors == true) {
 }
 
 // Mata in data i databasens tabeller
-$query = "INSERT INTO posts (name, message) VALUES('$name', '$message');";
+$query = "INSERT INTO posts (name, message, userId) VALUES('$name', '$message', '$1');";
 $return = $dbh->exec($query);
 
 if (!$return) {
