@@ -1,7 +1,6 @@
 <?php
     include("db/db.php");
     include("classes/blogpost.php");
-
 ?>
 
 <!DOCTYPE html>
