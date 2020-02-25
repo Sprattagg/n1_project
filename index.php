@@ -1,6 +1,6 @@
 <?php
     include("db/db.php");
-    include("classes/blogpost.php");
+    include("classes/posts.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blog</title>
-    <!-- <title>Alpacahead</title> -->
 </head>
 <body>
 
 <h1><a href="index.php">Super cool blog</a></h1>
-<!-- Kul effekt! <marquee behavior="" direction=""></marquee> -->
 
 <form method="GET" action="index.php">
 <input type="search" name="search_query">
