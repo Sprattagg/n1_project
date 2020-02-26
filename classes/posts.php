@@ -5,7 +5,7 @@
 class GBPost {
     // Deklara variabler, enbart för klassen då de är private
     private $databaseHandler;
-    private $order = "desc";
+    public $order = "desc";
     private $posts;
 
     public function __construct($dbh) {

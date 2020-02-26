@@ -78,7 +78,7 @@ $Posts = new GBPost($dbh);
 
 // argument för sortering i vår query
 if(isset($_GET['order']) && $_GET['order'] == "ascending") {
-    $order = "asc";
+    $Posts->order = "asc";
 }
 
 $Posts->fetchAll();
