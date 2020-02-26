@@ -15,7 +15,7 @@ class GBPost {
 
     public function fetchAll() {
 
-        $query = "SELECT id, userId, commentId, name, message, category, date_posted, img FROM posts ORDER BY date_posted $this->order";
+        $query = "SELECT id, name, message, date_posted FROM posts ORDER BY date_posted $this->order";
         
         $return_array = $this->databaseHandler->query($query);
         $return_array = $return_array->fetchAll(PDO::FETCH_ASSOC);

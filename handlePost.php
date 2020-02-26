@@ -1,7 +1,11 @@
 <?php
 
+/* session_start() behövs ev för query på rad 51 ska funka
+
 session_start();
 $_SESSION['userId'] = 1;
+$_SESSION['commentId'] = 2;
+*/
 
 include("db/db.php");
 
@@ -14,9 +18,6 @@ $query = "DELETE FROM posts WHERE id=". $_GET['id'];
 $return = $dbh->exec($query);
 
 header ("location:index.php");
-
-   // print_r($_GET);
-   // echo "delete";
 
 } else {
 
@@ -44,7 +45,8 @@ if ($errors == true) {
 }
 
 // Mata in data i databasens tabeller
-$query = "INSERT INTO posts (name, message, userId) VALUES('$name', '$message', '$1');";
+// lägg in '$1', '$2'); i query om det behövs för session_start()
+$query = "INSERT INTO posts (name, message) VALUES('$name', '$message');";
 $return = $dbh->exec($query);
 
 if (!$return) {
