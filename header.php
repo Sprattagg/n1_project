@@ -18,8 +18,15 @@
 
 <body>
 <h1>Super cool blog for Millhouse</h1>
+<<<<<<< HEAD
 <a href="index.php">Start</a> | 
 <a href="index.php?page=about">Om Oss</a> |
  <a href="views/">Logga in</a>
+=======
+<a href="index.php">Start</a> |
+<a href="index.php?page=about">Om Oss</a> |
+<a href="index.php?page=login">Logga in</a>
+
+>>>>>>> 5101080af1e763135ceae2382391bef2859f7517
 <br />
 <br />
