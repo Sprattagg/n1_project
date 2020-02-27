@@ -109,27 +109,6 @@ foreach( $Posts->getPosts() as $post ) {
 
 }
 
-// Behövs det här för sortering?
-
-    /*
-    // variabel som agerar som sql-kommando
-    $order = "desc";
-
-    // SQL-query
-    $query = "SELECT id, name, message, date_posted FROM posts ORDER BY date_posted $order";
-    $rows = $dbh->query($query);
-
-    while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
-
-         echo "<b>Name:</b>". $row["name"]."<br>";
-         echo "<b>Message:</b>". $row["message"]."<br>";
-         echo "<b>Date posted:</b>". $row["date_posted"]."<br>";
-         echo "<a href='handlePost.php?action=delete&id=" . $row["id"] . "'>Delete</a>";
-         echo "<hr />";
-        // print_r($row);
-    }
-    */
-
 ?>
 
 <form method="POST" action="handlePost.php">
