@@ -19,7 +19,7 @@
 <body>
 <h1>Super cool blog for Millhouse</h1>
 <a href="index.php">Start</a> |
-<a href="index.php?page=about">Om Oss</a> |
+<a href="index.php?page=about">Om oss</a> |
 <a href="index.php?page=login">Logga in</a>
 
 <br />

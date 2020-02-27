@@ -106,9 +106,9 @@ foreach( $Posts->getPosts() as $post ) {
     echo "<b>Name:</b>". $post["name"]."<br>";
     echo "<b>Message:</b>". $post["message"]."<br>";
     echo "<b>Date posted:</b>". $post["date_posted"]."<br>";
-    echo "<a href=\"views/handlePost.php?action=delete&id=". $post['id'] ."\">Delete</a>";
-// edit-knapp
-    // echo "<a href=\'views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
+    echo "<a href=\'views/handlePost.php?action=delete&id=". $post['id'] ."'>Delete</a>";
+    echo "<br />";
+    echo "<a href=\'views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
     echo "<hr />";
 
 }
