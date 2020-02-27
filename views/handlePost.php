@@ -7,7 +7,7 @@ $_SESSION['userId'] = 1;
 $_SESSION['commentId'] = 2;
 */
 
-include("db/db.php");
+include("../db/db.php");
 
 // Ta bort inlägg och skicka tillbaka användaren
 
@@ -17,7 +17,7 @@ if (isset($_GET['action']) && $_GET['action'] == "delete") {
 $query = "DELETE FROM posts WHERE id=". $_GET['id'];
 $return = $dbh->exec($query);
 
-header ("location:index.php");
+header ("location:../index.php");
 
 } else {
 
@@ -52,7 +52,7 @@ $return = $dbh->exec($query);
 if (!$return) {
     print_r($dbh->errorInfo());
 } else {
-    header("location:index.php");
+    header("location:../index.php");
 }
 
 }

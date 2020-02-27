@@ -72,7 +72,7 @@ if($page == "about"){
             echo "<b>Name:</b>". $row["name"]."<br>";
             echo "<b>Message:</b>". $row["message"]."<br>";
             echo "<b>Date posted:</b>". $row["date_posted"]."<br>";
-            echo "<a href=\"handlePost.php?action=delete&id=". $row['id'] ."\">Delete</a>";
+            echo "<a href=\"views/handlePost.php?action=delete&id=". $row['id'] ."\">Delete</a>";
             echo "<hr />";
         }
 ?>
@@ -82,7 +82,11 @@ if($page == "about"){
     } else {
 ?>
 
-Sortering: <a href="index.php?order=ascending">Stigande</a> | <a href="index.php?order=descending">Fallande</a><br /><hr />
+Sortering:
+<a href="index.php?order=ascending">Stigande</a> |
+<a href="index.php?order=descending">Fallande</a>
+<br />
+<hr />
 
 <?php
 
@@ -102,16 +106,16 @@ foreach( $Posts->getPosts() as $post ) {
     echo "<b>Name:</b>". $post["name"]."<br>";
     echo "<b>Message:</b>". $post["message"]."<br>";
     echo "<b>Date posted:</b>". $post["date_posted"]."<br>";
-    echo "<a href=\"handlePost.php?action=delete&id=". $post['id'] ."\">Delete</a>";
+    echo "<a href=\"views/handlePost.php?action=delete&id=". $post['id'] ."\">Delete</a>";
 // edit-knapp
-    // echo "<a href=\'handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
+    // echo "<a href=\'views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
     echo "<hr />";
 
 }
 
 ?>
 
-<form method="POST" action="handlePost.php">
+<form method="POST" action="views/handlePost.php">
 
     Namn: <br />
     <input type="text" name="name" required><br />
