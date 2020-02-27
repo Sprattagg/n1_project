@@ -1,6 +1,8 @@
 <?php
+    $title = "Millhouse";
     include("db/db.php");
     include("classes/posts.php");
+    include("header.php");
 ?>
 
 <!DOCTYPE html>
@@ -13,13 +15,25 @@
 </head>
 <body>
 
-<h1><a href="index.php">Super cool blog for Millhouse</a></h1>
+<?php 
+
+$page = (isset($_GET['page'])) ? $_GET['page'] : "";
+
+if($page == "about"){
+  include("about.php");
+} elseif ($page == "login"){
+  include("login.php");
+} else{
+  echo "<p> Hej och välkommen hit!</p>";
+}
+
+?>
 
 <form method="GET" action="index.php">
 <input type="search" name="search_query">
 <input type="submit" value="Sök">
 </form>
-
+<br />
 <hr />
 
 <?php
@@ -131,6 +145,10 @@ foreach( $Posts->getPosts() as $post ) {
     
 <?php
     }
+?>
+
+<?php 
+include("footer.php");
 ?>
 
 </body>
