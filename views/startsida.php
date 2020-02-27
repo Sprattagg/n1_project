@@ -35,8 +35,10 @@
             echo '<a href="logout.php">Logga ut</a>';
         } else {
             // Visar loginformuläret.
-            include('loginform.php');
+            include('loginForm.php');
             echo '<a href="signupForm.php"><h4>Registrera användare</h4></a>';
+            //ok
+        
         }
         ?>
 
