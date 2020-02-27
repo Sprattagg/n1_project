@@ -26,7 +26,7 @@
 =======
 <a href="index.php">Start</a> |
 <a href="index.php?page=about">Om Oss</a> |
-<a href="index.php?page=login">Logga in</a>
+<a href="includes/startsida.php">Logga in</a>
 
 >>>>>>> 5101080af1e763135ceae2382391bef2859f7517
 =======
