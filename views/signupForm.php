@@ -18,8 +18,10 @@
         // Ifall vi har key "error" i vår GET-array så visar vi felmeddelade:
         if (isset($_GET['error']) && $_GET['error'] == true) {
             echo "<h3>Användarnamnet finns redan!</h3>";
+            //mjo.
         }
         ?>
+        
 
         <form method="POST" action="signup.php">
             <input type="text" name="user_name" placeholder="username" class="form_username" required>
