@@ -1,5 +1,5 @@
 <?php
-include('includes/myDB.php');
+include('../db/db.php');
 
 $username = $_POST['user_name'];
 $password = md5($_POST['password']); // md5() krypterar med md5-kryptering. Bra för lösen etc.

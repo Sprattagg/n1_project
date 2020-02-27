@@ -1,5 +1,5 @@
 <?php
-include('includes/myDB.php');
+include('../db/db.php');
 
 $userName = $_POST['user_name'];
 $password = md5($_POST['password']);
