@@ -34,6 +34,6 @@ if(!count($result) == 0){
         echo "någonting blev galet!";
     } else {
         // Skicka vidare till startsida.
-        header("location:index.php");
+        header("location:../index.php");
     }
 }
