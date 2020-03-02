@@ -1,10 +1,10 @@
 <?php
 include('../db/db.php');
 
-$userName = $_POST['user_name'];
+$userName = $_POST['username'];
 $password = md5($_POST['password']);
 
-$getquery = "SELECT Id, username, password FROM Users WHERE username='$userName' AND password='$password'";
+$getquery = "SELECT id, username, password FROM users WHERE username='$userName' AND password='$password'";
 
 $dataFromDB = $dbh->query($getquery);
 $row = $dataFromDB->fetch(PDO::FETCH_ASSOC);

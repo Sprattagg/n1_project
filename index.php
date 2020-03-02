@@ -24,7 +24,7 @@ if($page == "about"){
 } elseif ($page == "login"){
   include("login.php");
 } else{
-  echo "<p> Hej och välkommen hit!</p>";
+  echo "<p>Hej och välkommen hit!</p>";
 }
 
 ?>
@@ -36,6 +36,7 @@ if($page == "about"){
 <br />
 <hr />
 
+<!-- SÖK -->
 <?php
     if (isset($_GET['search_query'])) {
         $searchQuery = $_GET['search_query'];
@@ -72,7 +73,7 @@ if($page == "about"){
             echo "<b>Name:</b>". $row["name"]."<br>";
             echo "<b>Message:</b>". $row["message"]."<br>";
             echo "<b>Date posted:</b>". $row["date_posted"]."<br>";
-            echo "<a href=\"views/handlePost.php?action=delete&id=". $row['id'] ."\">Delete</a>";
+            echo "<a href='views/handlePost.php?action=delete&id=". $row['id'] . "'>Delete</a>";
             echo "<hr />";
         }
 ?>
@@ -106,9 +107,9 @@ foreach( $Posts->getPosts() as $post ) {
     echo "<b>Name:</b>". $post["name"]."<br>";
     echo "<b>Message:</b>". $post["message"]."<br>";
     echo "<b>Date posted:</b>". $post["date_posted"]."<br>";
-    echo "<a href=\'views/handlePost.php?action=delete&id=". $post['id'] ."'>Delete</a>";
+    echo "<a href='views/handlePost.php?action=delete&id=". $post['id'] ."'>Delete</a>";
     echo "<br />";
-    echo "<a href=\'views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
+    echo "<a href='views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
     echo "<hr />";
 
 }
