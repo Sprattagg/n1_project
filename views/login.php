@@ -1,13 +1,12 @@
 <?php
 include('../db/db.php');
 
-$userName = $_POST['username'];
+$userName = $_POST['Username'];
 $password = md5($_POST['password']);
 
 
 $getquery = "SELECT id, username, password FROM users WHERE username='$userName' AND password='$password'";
 
-$getquery = "SELECT Id, username, password FROM users WHERE username='$userName' AND password='$password'";
 
 
 $dataFromDB = $dbh->query($getquery);
@@ -29,7 +28,8 @@ $row = $dataFromDB->fetch(PDO::FETCH_ASSOC);
 
 <?php
 
-// Ifall vårt svar från DB är tomt = finns ingen användare med den infon. 
+// Ifall vårt svar från DB är tomt = finns ingen användare med den infon.
+
 if(empty($row)){
     //Skickar tillbaka till signupForm.php med en hårdkodad GET-variabel.
     header("location:../index.php?err=true");
