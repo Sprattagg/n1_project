@@ -7,7 +7,7 @@ $password = md5($_POST['password']); // md5() krypterar med md5-kryptering. Bra 
 
 // SQL-Queries
 $query = "INSERT INTO users(username, password) VALUES ('$username', '$password');";
-$getquery = "SELECT Id, username, password FROM Users WHERE username='$username' AND password='$password' OR username='$username';";
+$getquery = "SELECT Id, username, password FROM users WHERE username='$username' AND password='$password' OR username='$username';";
 
  
 
@@ -34,6 +34,6 @@ if(!count($result) == 0){
         echo "någonting blev galet!";
     } else {
         // Skicka vidare till startsida.
-        header("location:index.php");
+        header("location:../index.php");
     }
 }

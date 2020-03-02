@@ -15,6 +15,34 @@
 </head>
 <body>
 
+
+<div class="startsida">
+
+        <?php
+
+        session_start(); // Måste börja skriva session_start() när man ska använda SESSION-variablar.
+
+        // Ifall fel lösen/användarnamn skrivs in
+        if (isset($_GET['err']) && $_GET['err'] == true) {
+            echo "<h1>VAFAN HÅLLER DU PÅ MED????? DU HAR SKRIVIT FEL!</h1>";
+        }
+
+
+        // Ifall användaren lyckats logga in.
+        if (isset($_SESSION['Username'])) {
+            echo "<blink><h1 class='welcome'>Välkommen " . $_SESSION['Username'] . "</h1></blink>";
+            echo '<a href="views/logout.php">Logga ut</a>';
+        } else {
+            // Visar loginformuläret.
+            include('views/loginForm.php');
+            echo '<a href="views/signupForm.php"><h4>Registrera användare</h4></a>';
+            //ok
+        
+        }
+        ?>
+
+    </div>
+
 <?php 
 
 $page = (isset($_GET['page'])) ? $_GET['page'] : "";
