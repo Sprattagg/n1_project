@@ -19,16 +19,15 @@ $return = $dbh->exec($query);
 
 header ("location:../index.php");
 
-} 
+}
 
+/* FIXA EDIT!
 else if (isset($_GET['action']) && $_GET['action'] == "edit") {
 
-$query = "UPDATE posts WHERE id=". $_GET['id'];
+$query = "UPDATE posts SET name='$name', message='$message' WHERE id=". $_GET['id'];
 $return = $dbh->exec($query);
-    
-header ("location:../index.php");
-    
-}
+
+} */
 
 else {
 

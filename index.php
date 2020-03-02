@@ -64,6 +64,10 @@ if($page == "about"){
 <br />
 <hr />
 
+<!-- EDIT -->
+
+
+
 <!-- SÖK -->
 <?php
     if (isset($_GET['search_query'])) {
