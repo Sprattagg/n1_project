@@ -1,6 +1,6 @@
 
 
-<h2>Om oss funkar!</h2>
+<p>Vi heter Millhouse och vi har en häftig blogg!</p>
 
 
 

@@ -33,8 +33,8 @@ if(empty($row)){
     session_start();
 
     // Sparar användarnamn och lösen i SESSION-variabeln. Den är TYP som localstorage i JS. 
-    $_SESSION['Username'] = $row['Username'];
-    $_SESSION['Password'] = $row['Password'];
+    $_SESSION['username'] = $row['username'];
+    $_SESSION['password'] = $row['password'];
 
     header("location:../index.php");
 
