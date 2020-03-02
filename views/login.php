@@ -4,11 +4,11 @@ include('../db/db.php');
 $userName = $_POST['username'];
 $password = md5($_POST['password']);
 
-<<<<<<< HEAD
+
 $getquery = "SELECT id, username, password FROM users WHERE username='$userName' AND password='$password'";
-=======
+
 $getquery = "SELECT Id, username, password FROM users WHERE username='$userName' AND password='$password'";
->>>>>>> a12ad1784f44a03b42c6c12ece0609f986258280
+
 
 $dataFromDB = $dbh->query($getquery);
 $row = $dataFromDB->fetch(PDO::FETCH_ASSOC);
