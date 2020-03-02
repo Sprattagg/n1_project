@@ -10,8 +10,6 @@ $dataFromDB = $dbh->query($getquery);
 $row = $dataFromDB->fetch(PDO::FETCH_ASSOC);
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +26,7 @@ $row = $dataFromDB->fetch(PDO::FETCH_ASSOC);
 // Ifall vårt svar från DB är tomt = finns ingen användare med den infon. 
 if(empty($row)){
     //Skickar tillbaka till signupForm.php med en hårdkodad GET-variabel.
-    header("location:startsida.php?err=true");
+    header("location:../index.php?err=true");
 } else{
     echo "Du kan logga in";
 
@@ -38,7 +36,7 @@ if(empty($row)){
     $_SESSION['Username'] = $row['Username'];
     $_SESSION['Password'] = $row['Password'];
 
-    header("location:startsida.php");
+    header("location:../index.php");
 
     
 
