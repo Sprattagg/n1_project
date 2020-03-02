@@ -9,7 +9,7 @@ $_SESSION['commentId'] = 2;
 
 include("../db/db.php");
 
-// Ta bort inlägg och skicka tillbaka användaren
+// Ta bort och redigera inlägg och skicka tillbaka användaren
 
 // = om den är satt och lika med delete körs det som står i blocket
 if (isset($_GET['action']) && $_GET['action'] == "delete") {
@@ -19,7 +19,18 @@ $return = $dbh->exec($query);
 
 header ("location:../index.php");
 
-} else {
+} 
+
+else if (isset($_GET['action']) && $_GET['action'] == "edit") {
+
+$query = "UPDATE posts WHERE id=". $_GET['id'];
+$return = $dbh->exec($query);
+    
+header ("location:../index.php");
+    
+}
+
+else {
 
 // Felmeddelande för gästbok och tvinga användare att skriva något i fälten
 $name    = (!empty($_POST['name']) ? $_POST['name'] : "");
