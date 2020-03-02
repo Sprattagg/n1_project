@@ -4,7 +4,11 @@ include('../db/db.php');
 $userName = $_POST['username'];
 $password = md5($_POST['password']);
 
+<<<<<<< HEAD
 $getquery = "SELECT id, username, password FROM users WHERE username='$userName' AND password='$password'";
+=======
+$getquery = "SELECT Id, username, password FROM users WHERE username='$userName' AND password='$password'";
+>>>>>>> a12ad1784f44a03b42c6c12ece0609f986258280
 
 $dataFromDB = $dbh->query($getquery);
 $row = $dataFromDB->fetch(PDO::FETCH_ASSOC);
@@ -28,7 +32,7 @@ $row = $dataFromDB->fetch(PDO::FETCH_ASSOC);
 // Ifall vårt svar från DB är tomt = finns ingen användare med den infon. 
 if(empty($row)){
     //Skickar tillbaka till signupForm.php med en hårdkodad GET-variabel.
-    header("location:startsida.php?err=true");
+    header("location:../index.php?err=true");
 } else{
     echo "Du kan logga in";
 
@@ -38,7 +42,7 @@ if(empty($row)){
     $_SESSION['Username'] = $row['Username'];
     $_SESSION['Password'] = $row['Password'];
 
-    header("location:startsida.php");
+    header("location:../index.php");
 
     
 
