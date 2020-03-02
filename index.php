@@ -27,10 +27,10 @@
             echo "<h1>VAFAN HÅLLER DU PÅ MED????? DU HAR SKRIVIT FEL!</h1>";
         }
 
-echo $_SESSION['Username'];
+echo $_SESSION['username'];
         // Ifall användaren lyckats logga in.
-        if (isset($_SESSION['Username'])) {
-            echo "<blink><h1 class='welcome'>Välkommen " . $_SESSION['Username'] . "</h1></blink>";
+        if (isset($_SESSION['username'])) {
+            echo "<blink><h1 class='welcome'>Välkommen " . $_SESSION['username'] . "</h1></blink>";
             echo '<a href="views/logout.php">Logga ut</a>';
         } else {
             // Visar loginformuläret.
