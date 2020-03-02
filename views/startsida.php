@@ -17,7 +17,7 @@
     </div>
 
 
-    <div>
+    <div class="startsida">
 
         <?php
 
