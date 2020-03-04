@@ -14,8 +14,6 @@
     <title>Millhouse</title>
 </head>
 <body>
-
-
 <div class="startsida">
 
         <?php
@@ -64,8 +62,21 @@ if($page == "about"){
 <br />
 <hr />
 
-<!-- EDIT -->
+<!-- EDIT ? -->
 
+<?php /*
+	if (isset($_GET['edit'])) {
+		$id = $_GET['edit'];
+		$update = true;
+		$record = mysqli_query($db, "SELECT * FROM posts WHERE id=$id");
+
+		if (count($record) == 1 ) {
+			$n = mysqli_fetch_array($record);
+			$name = $n['name'];
+			$message = $n['message'];
+		}
+	} */
+?>
 
 
 <!-- SÖK -->
