@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 25, 2020 at 02:08 PM
+-- Generation Time: Mar 06, 2020 at 09:31 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -33,7 +33,8 @@ CREATE TABLE `comments` (
   `name` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `date_posted` datetime NOT NULL DEFAULT current_timestamp(),
-  `userId` int(11) NOT NULL
+  `userId` int(11) NOT NULL,
+  `postId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -49,9 +50,21 @@ CREATE TABLE `posts` (
   `date_posted` datetime NOT NULL DEFAULT current_timestamp(),
   `category` varchar(50) DEFAULT 'misc',
   `img` varchar(300) NOT NULL DEFAULT 'misc',
-  `userId` int(11) NOT NULL,
-  `commentId` int(11) NOT NULL
+  `userId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `name`, `message`, `date_posted`, `category`, `img`, `userId`) VALUES
+(20, 'hej', 'test', '2020-03-02 13:26:17', 'misc', 'misc', NULL),
+(21, 'name', 'message', '2020-03-02 13:26:23', 'misc', 'misc', NULL),
+(22, '', '', '2020-03-02 13:39:38', 'misc', 'misc', NULL),
+(23, '', '', '2020-03-02 14:22:07', 'misc', 'misc', NULL),
+(24, '', '', '2020-03-02 14:22:09', 'misc', 'misc', NULL),
+(25, '', '', '2020-03-02 14:22:10', 'misc', 'misc', NULL),
+(26, '', '', '2020-03-02 14:22:11', 'misc', 'misc', NULL);
 
 -- --------------------------------------------------------
 
@@ -67,6 +80,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `roll`) VALUES
+(3, 'hej', '541c57960bb997942655d14e3b9607f9', 'user');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -75,15 +95,15 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `userId` (`userId`);
+  ADD KEY `userId` (`userId`),
+  ADD KEY `commentId` (`postId`) USING BTREE;
 
 --
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `userId` (`userId`),
-  ADD KEY `commentId` (`commentId`);
+  ADD KEY `userId` (`userId`);
 
 --
 -- Indexes for table `users`
@@ -105,13 +125,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -121,14 +141,14 @@ ALTER TABLE `users`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`);
 
 --
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`commentId`) REFERENCES `comments` (`id`);
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
