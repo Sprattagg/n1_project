@@ -32,7 +32,8 @@ $return = $dbh->exec($query);
 else {
 
 // Felmeddelande för gästbok och tvinga användare att skriva något i fälten
-$name    = (!empty($_POST['name']) ? $_POST['name'] : "");
+session_start();
+$name    = $_SESSION['Username'];
 $message = (!empty($_POST['message']) ? $_POST['message'] : "");
 
 $errors = false;

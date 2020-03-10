@@ -134,7 +134,7 @@ if(isset($_GET['order']) && $_GET['order'] == "ascending") {
 }
 
 $Posts->fetchAll();
-
+if (isset($_SESSION['Username'])) {
 // Loop som hämtar alla rader i Posts
 foreach( $Posts->getPosts() as $post ) {
     echo "<b>Name:</b>". $post["name"]."<br>";
@@ -153,20 +153,23 @@ foreach( $Posts->getPosts() as $post ) {
     </form>";
     getComments($dbh, $post['id']);
 }
-
+}
 ?>
+<?php
+if (isset($_SESSION['Username'])) {
+echo"
 
-<form method="POST" action="views/handlePost.php">
+<form method='POST' action='views/handlePost.php'>
 
-    Namn: <br />
-    <input type="text" name="name" required><br />
-    <br />
+    
     Meddelande: <br />
-    <textarea name="message" id="textarea" cols="60" rows="10" required></textarea><br />
-    <input type="submit" value="Skicka">
+    <textarea name='message' id='textarea' cols='60' rows='10' required></textarea><br />
+    <input type='submit' value='Skicka'>
 
 </form>
-    
+  ";
+}
+   ?>
 <?php
     }
 ?>
