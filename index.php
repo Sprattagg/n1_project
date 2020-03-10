@@ -3,6 +3,7 @@
     include("db/db.php");
     include("classes/posts.php");
     include("header.php");
+    include("views/comments.inc.php");
 ?>
 
 <!DOCTYPE html>
@@ -143,7 +144,14 @@ foreach( $Posts->getPosts() as $post ) {
     echo "<br />";
     echo "<a href='views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
     echo "<hr />";
-
+    echo "<form method='POST' action='views/handleComments.php'>
+    <input type='hidden' name='id' value='".$post['id']."'>
+    <input type='hidden' name='name' value='".$_SESSION['Username']."'>
+    <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
+    <textarea name='message'></textarea><br>
+    <button type='submit' name='commentSubmit'>Comment</button>
+    </form>";
+    getComments($dbh, $post['id']);
 }
 
 ?>
