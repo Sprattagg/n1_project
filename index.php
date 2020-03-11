@@ -12,12 +12,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="css/style.css">
     <title>Millhouse</title>
 </head>
 <body>
 
 
-<div class="startsida">
+<div class="login">
 
         <?php
 
@@ -57,14 +58,16 @@ if($page == "about"){
 }
 
 ?>
-
-<form method="GET" action="index.php">
-<input type="search" name="search_query">
-<input type="submit" value="Sök">
+<?php
+if (isset($_SESSION['Username'])) {
+echo "<div class='search'>
+<form method='GET' action='index.php'>
+<input type='search' name='search_query'>
+<input type='submit' value='Sök'>
 </form>
-<br />
-<hr />
-
+</div>";
+}
+?>
 <!-- EDIT -->
 
 
@@ -95,12 +98,12 @@ if($page == "about"){
             print_r($dbh->errorInfo());
             die;
         }
-
+        
         echo "<h2>Sökresultat</h2> Vi hittade ". $sth->rowCount() ." inlägg på sökordet $searchQuery<hr />";
         echo 
         '<a href="index.php">Hem</a><br>
         Sortering: <a href="index.php?search_query=' . $searchQuery . '&order=ascending">Stigande</a> | <a href="index.php?search_query=' . $searchQuery . '&order=descending">Fallande</a><br /><hr />';
-
+        
         while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
 
             echo "<b>Name:</b>". $row["name"]."<br>";
@@ -117,11 +120,17 @@ if($page == "about"){
 ?>
 
 Sortering:
-<a href="index.php?order=ascending">Stigande</a> |
-<a href="index.php?order=descending">Fallande</a>
+<?php
+if (isset($_SESSION['Username'])){
+    echo
+"<div class='sort'>
+<a href='index.php?order=ascending'>Stigande</a> |
+<a href='index.php?order=descending'>Fallande</a>
 <br />
 <hr />
-
+</div>";
+}
+?>
 <?php
 
 // Ersätter kod för sortering
@@ -137,14 +146,14 @@ $Posts->fetchAll();
 if (isset($_SESSION['Username'])) {
 // Loop som hämtar alla rader i Posts
 foreach( $Posts->getPosts() as $post ) {
-    echo "<b>Name:</b>". $post["name"]."<br>";
+    echo "<div class='post-comment'><div class='post'><b>Name:</b>". $post["name"]."<br>";
     echo "<b>Message:</b>". $post["message"]."<br>";
     echo "<b>Date posted:</b>". $post["date_posted"]."<br>";
     echo "<a href='views/handlePost.php?action=delete&id=". $post['id'] ."'>Delete</a>";
     echo "<br />";
     echo "<a href='views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
-    echo "<hr />";
-    echo "<form method='POST' action='views/handleComments.php'>
+    echo "<hr /></div>";
+    echo "<div class='comment'><form method='POST' action='views/handleComments.php'>
     <input type='hidden' name='id' value='".$post['id']."'>
     <input type='hidden' name='name' value='".$_SESSION['Username']."'>
     <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
@@ -152,6 +161,7 @@ foreach( $Posts->getPosts() as $post ) {
     <button type='submit' name='commentSubmit'>Comment</button>
     </form>";
     getComments($dbh, $post['id']);
+    echo "</div></div>";
 }
 }
 ?>
@@ -159,14 +169,14 @@ foreach( $Posts->getPosts() as $post ) {
 if (isset($_SESSION['Username'])) {
 echo"
 
-<form method='POST' action='views/handlePost.php'>
+<div class='meddelande'><form method='POST' action='views/handlePost.php'>
 
     
     Meddelande: <br />
     <textarea name='message' id='textarea' cols='60' rows='10' required></textarea><br />
     <input type='submit' value='Skicka'>
 
-</form>
+</form> </div>
   ";
 }
    ?>
@@ -177,6 +187,7 @@ echo"
 <?php 
 include("footer.php");
 ?>
+
 
 </body>
 </html>
