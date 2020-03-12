@@ -9,8 +9,6 @@
 <body>
 	<div class="container content">
 		<!-- Left side menu -->
-		<?php include('menu.php') ?>
-		<!-- Create admin  -->
 		<div class="action">
 			<h2 class="page-title">Create admin user</h2>
 

@@ -39,7 +39,6 @@ echo @$_SESSION['Username'];
         if (isset($_SESSION['Username'])) {
             echo "<blink><h1 class='welcome'>Välkommen " . $_SESSION['Username'] . "</h1></blink>";
             echo '<a href="views/logout.php">Logga ut</a><br />';
-            echo '<a href="admin/users.php">Admin menu</a>';
         } else {
             // Visar loginformuläret.
             include('views/loginForm.php');
@@ -47,9 +46,26 @@ echo @$_SESSION['Username'];
             //ok
         
         }
+
         ?>
 
-    </div>
+<?php
+
+   if (isset($_SESSION['Roll'])&&$_SESSION['Roll']=='admin') {
+
+        echo '<a href="admin/users.php">Admin menu</a>';
+
+    }
+
+
+
+
+
+?>
+
+        
+        
+</div>
 
 <?php 
 
