@@ -1,12 +1,35 @@
-.login{
+.container{
     width:90%;
+    margin:0 auto;
+    font-family: 'Indie Flower', cursive;
+    
+}
+header{
+    background-image: url(../img/pants-1255847.jpg);
+}
+header h1{
+    font-size: 60px;
+    margin: 0 auto;
+    width: 350px;
+    color:white;
+}
+.login{
+    width: 90%;
     text-align: center;
 }
 
 .search{
-    margin:20px;
+    margin:0 auto;
+    width: 300px;
 }
+.search button{
+    background-color: navy;
+    color: white;
+}
+.search input{
+    border-radius:10px;
 
+}
 .sort{
     margin:20px;
 }
@@ -15,6 +38,7 @@
     border: 1px solid black;
     border-radius:10px;
     margin:20px;
+    letter-spacing: 3px;
     
 
 
@@ -42,4 +66,20 @@
     border-radius:10px;
     
 
+}
+
+.btn{
+    background-color: navy;
+    color: white;
+    font-family: inherit;
+    padding: 5px;
+    border: 2px white;
+    font-weight: bold;
+    box-shadow: 1px 1px black;
+}
+
+.bt{
+    border: 0;
+    background-color: red;
+    font-family: inherit;
 }
