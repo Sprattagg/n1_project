@@ -30,12 +30,12 @@
             echo "<h1>VAFAN HÅLLER DU PÅ MED????? DU HAR SKRIVIT FEL!</h1>";
         }
 
-echo $_SESSION['username'];
 echo @$_SESSION['Username'];
         // Ifall användaren lyckats logga in.
-        if (isset($_SESSION['username'])) {
-            echo "<blink><h1 class='welcome'>Välkommen " . $_SESSION['username'] . "</h1></blink>";
-            echo '<a href="views/logout.php">Logga ut</a>';
+        if (isset($_SESSION['Username'])) {
+            echo "<blink><h1 class='welcome'>Välkommen " . $_SESSION['Username'] . "</h1></blink>";
+            echo '<a href="views/logout.php">Logga ut</a><br />';
+            echo '<a href="admin/users.php">Admin menu</a>';
         } else {
             // Visar loginformuläret.
             include('views/loginForm.php');
