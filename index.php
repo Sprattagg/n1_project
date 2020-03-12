@@ -2,7 +2,6 @@
     $title = "Millhouse";
     include("db/db.php");
     include("classes/posts.php");
-    include("header.php");
     include("views/comments.inc.php");
 ?>
 
@@ -13,10 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <link rel="stylesheet" href="css/style.css">
+     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <title>Millhouse</title>
 </head>
 <body>
 
+<div class='container'> 
+    <header>
+        <h1>Millhouse</h1>
+    </header>
 
 <div class="login">
 
@@ -47,15 +51,7 @@ echo @$_SESSION['Username'];
 
 <?php 
 
-$page = (isset($_GET['page'])) ? $_GET['page'] : "";
 
-if($page == "about"){
-  include("about.php");
-} elseif ($page == "login"){
-  include("login.php");
-} else{
-  echo "<p>Hej och välkommen hit!</p>";
-}
 
 ?>
 <?php
@@ -63,7 +59,7 @@ if (isset($_SESSION['Username'])) {
 echo "<div class='search'>
 <form method='GET' action='index.php'>
 <input type='search' name='search_query'>
-<input type='submit' value='Sök'>
+<input class='btn' type='submit' value='Sök'>
 </form>
 </div>";
 }
@@ -109,7 +105,7 @@ echo "<div class='search'>
             echo "<b>Name:</b>". $row["name"]."<br>";
             echo "<b>Message:</b>". $row["message"]."<br>";
             echo "<b>Date posted:</b>". $row["date_posted"]."<br>";
-            echo "<a href='views/handlePost.php?action=delete&id=". $row['id'] . "'>Delete</a>";
+            echo "<a class='bt' href='views/handlePost.php?action=delete&id=". $row['id'] . "'>Delete</a>";
             echo "<hr />";
         }
 ?>
@@ -119,7 +115,7 @@ echo "<div class='search'>
     } else {
 ?>
 
-Sortering:
+
 <?php
 if (isset($_SESSION['Username'])){
     echo
@@ -151,14 +147,14 @@ foreach( $Posts->getPosts() as $post ) {
     echo "<b>Date posted:</b>". $post["date_posted"]."<br>";
     echo "<a href='views/handlePost.php?action=delete&id=". $post['id'] ."'>Delete</a>";
     echo "<br />";
-    echo "<a href='views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
+    echo "<a  href='views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
     echo "<hr /></div>";
     echo "<div class='comment'><form method='POST' action='views/handleComments.php'>
     <input type='hidden' name='id' value='".$post['id']."'>
     <input type='hidden' name='name' value='".$_SESSION['Username']."'>
     <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
     <textarea name='message'></textarea><br>
-    <button type='submit' name='commentSubmit'>Comment</button>
+    <button class='btn' type='submit' name='commentSubmit'>Comment</button>
     </form>";
     getComments($dbh, $post['id']);
     echo "</div></div>";
@@ -174,7 +170,7 @@ echo"
     
     Meddelande: <br />
     <textarea name='message' id='textarea' cols='60' rows='10' required></textarea><br />
-    <input type='submit' value='Skicka'>
+    <input class='btn' type='submit' value='Skicka'>
 
 </form> </div>
   ";
@@ -188,6 +184,7 @@ echo"
 include("footer.php");
 ?>
 
+</div>
 
 </body>
 </html>
