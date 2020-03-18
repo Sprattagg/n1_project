@@ -145,9 +145,11 @@ foreach( $Posts->getPosts() as $post ) {
     echo "<div class='post-comment'><div class='post'><b>Name:</b>". $post["name"]."<br>";
     echo "<b>Message:</b>". $post["message"]."<br>";
     echo "<b>Date posted:</b>". $post["date_posted"]."<br>";
-    echo "<a href='views/handlePost.php?action=delete&id=". $post['id'] ."'>Delete</a>";
-    echo "<br />";
-    echo "<a  href='views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
+    if (isset($_SESSION['admin'])&& $_SESSION['admin']==1) {
+        echo "<a href='views/handlePost.php?action=delete&id=". $post['id'] ."'>Delete</a>";
+        echo "<br />";
+        echo "<a  href='views/handlePost.php?action=edit&id=" . $post['id'] . "'>Edit</a>";
+    }
     echo "<hr /></div>";
     echo "<div class='comment'><form method='POST' action='views/handleComments.php'>
     <input type='hidden' name='id' value='".$post['id']."'>
@@ -157,12 +159,13 @@ foreach( $Posts->getPosts() as $post ) {
     <button class='btn' type='submit' name='commentSubmit'>Comment</button>
     </form>";
     getComments($dbh, $post['id']);
+    
     echo "</div></div>";
 }
 }
 ?>
 <?php
-if (isset($_SESSION['Username'])) {
+if (isset($_SESSION['admin'])&& $_SESSION['admin']==1) {
 echo"
 
 <div class='meddelande'><form method='POST' action='views/handlePost.php'>

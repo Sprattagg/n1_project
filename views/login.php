@@ -5,7 +5,7 @@ $userName = $_POST['Username'];
 $password = md5($_POST['password']);
 
 
-$getquery = "SELECT id, username, password FROM users WHERE username='$userName' AND password='$password'";
+$getquery = "SELECT id, username, password, admin FROM users WHERE username='$userName' AND password='$password'";
 
 
 
@@ -41,7 +41,7 @@ if(empty($row)){
     // Sparar användarnamn och lösen i SESSION-variabeln. Den är TYP som localstorage i JS. 
     $_SESSION['Username'] = $row['username'];
     $_SESSION['Password'] = $row['password'];
-
+    $_SESSION['admin'] = $row['admin'];
     header("location:../index.php");
 
     
